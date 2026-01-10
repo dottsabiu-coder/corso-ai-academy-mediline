@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Corso AI per Odontoiatri - Integra l'intelligenza artificiale nella pratica clinica con metodo. Studio Sabiu Academy x Mediline. 13-14 Marzo 2026, Alghero.">
+    <title>AI Academy - Metodo e Intelligenza Artificiale per Odontoiatri</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --text: #334155;
+            --text-light: #64748b;
+            --bg-light: #f8fafc;
+            --accent: #06b6d4;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            padding: 120px 2rem 80px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(99,102,241,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.2);
+            border: 1px solid var(--primary);
+            color: var(--accent);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero h1 .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #94a3b8;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .hero-cta-container {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .cta-secondary:hover {
+            background: white;
+            color: var(--dark);
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 4rem;
+            animation: fadeIn 1s ease-out 0.8s backwards;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: block;
+        }
+
+        .stat-label {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background: var(--bg-light);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .problem-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .problem-card h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .problem-card p {
+            color: var(--text-light);
+        }
+
+        /* Solution Section */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .solution-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+        }
+
+        .solution-content h3 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .solution-list {
+            list-style: none;
+        }
+
+        .solution-list li {
+            padding: 1rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+        }
+
+        .solution-list li:last-child {
+            border-bottom: none;
+        }
+
+        .check-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .benefit-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.15);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.4rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Program Section */
+        .program-section {
+            background: var(--dark);
+            color: white;
+        }
+
+        .program-section .section-title {
+            color: white;
+        }
+
+        .program-section .section-subtitle {
+            color: #94a3b8;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+        }
+
+        .pricing-section .section-title {
+            color: white;
+        }
+
+        .pricing-section .section-subtitle {
+            color: #94a3b8;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 900px;
+            margin: 3rem auto 0;
+        }
+
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.4);
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.08) translateY(-10px);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.05); }
+        }
+
+        .pricing-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .pricing-price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin: 1.5rem 0;
+            line-height: 1;
+        }
+
+        .pricing-price .currency {
+            font-size: 2rem;
+            vertical-align: super;
+        }
+
+        .pricing-vat {
+            font-size: 1rem;
+            color: #94a3b8;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-total {
+            font-size: 1.3rem;
+            color: white;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #cbd5e1;
+        }
+
+        .pricing-features .check {
+            color: var(--accent);
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .pricing-cta {
+            background: white;
+            color: var(--dark);
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .pricing-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3);
+        }
+
+        .pricing-card.featured .pricing-cta {
+            background: var(--dark);
+            color: white;
+        }
+
+        .pricing-savings {
+            display: inline-block;
+            background: rgba(6, 182, 212, 0.2);
+            color: var(--accent);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            border: 1px solid var(--accent);
+        }
+
+        /* Mailchimp Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 0;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+        }
+
+        .modal-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-header p {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        #mc_embed_signup {
+            background: white !important;
+            width: 100% !important;
+            clear: both;
+        }
+
+        #mc_embed_signup form {
+            padding: 0 !important;
+        }
+
+        #mc_embed_signup h2 {
+            font-size: 1.3rem !important;
+            color: var(--dark) !important;
+            margin-bottom: 1.5rem !important;
+            font-weight: 600 !important;
+        }
+
+        #mc_embed_signup .mc-field-group {
+            margin-bottom: 1.5rem;
+        }
+
+        #mc_embed_signup label {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        #mc_embed_signup input[type="email"] {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        #mc_embed_signup input[type="email"]:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        #mc_embed_signup .button {
+            background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+            color: white !important;
+            padding: 1rem 3rem !important;
+            border: none !important;
+            border-radius: 50px !important;
+            font-size: 1.1rem !important;
+            font-weight: 700 !important;
+            cursor: pointer !important;
+            transition: all 0.3s !important;
+            width: 100% !important;
+        }
+
+        #mc_embed_signup .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        #mc_embed_signup .indicates-required {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        #mc_embed_signup .asterisk {
+            color: #ef4444;
+        }
+
+        .brochure-cta {
+            background: var(--accent);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: inline-block;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .brochure-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(6, 182, 212, 0.4);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .program-timeline {
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .program-item {
+            display: grid;
+            grid-template-columns: 60px 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .program-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .program-content {
+            padding-top: 0.5rem;
+        }
+
+        .program-content h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .program-content p {
+            color: #94a3b8;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .about-image {
+            width: 100%;
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+        }
+
+        .about-content h3 {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .credential {
+            background: var(--bg-light);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: var(--bg-light);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--dark);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: var(--bg-light);
+        }
+
+        .faq-answer {
+            padding: 0 2rem 1.5rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            color: var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 80px 2rem;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .urgency-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            padding: 2rem;
+            border-radius: 15px;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .urgency-box strong {
+            font-size: 1.5rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Form */
+        .form-section {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-submit {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
+        }
+
+        .form-note {
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+        .footer-logos {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .footer-logo-img {
+            max-width: 400px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .footer-contact {
+            margin: 2rem 0;
+            color: #94a3b8;
+        }
+
+        .footer-contact a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .footer-contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .solution-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-cta-container {
+                flex-direction: column;
+            }
+
+            .cta-primary,
+            .cta-secondary {
+                width: 100%;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .footer-logo-img {
+                max-width: 90%;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .pricing-card.featured:hover {
+                transform: scale(1.02) translateY(-5px);
+            }
+
+            .pricing-price {
+                font-size: 2.5rem;
+            }
+
+            .hero-badge {
+                font-size: 0.8rem;
+                padding: 0.5rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="logo">AI ACADEMY</a>
+            <a href="#iscrizioni" class="nav-cta">Iscriviti Ora</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">⚡ EARLY BIRD: Primi 10 posti a €690+IVA (risparmi €134) | 📍 13-14 Marzo 2026, Alghero</div>
+            <h1>
+                Integra <span class="gradient-text">Metodo e AI</span><br>
+                nel Lavoro Reale
+            </h1>
+            <p>
+                Non un corso sugli strumenti. Un percorso su come lavorare meglio<br>
+                usando anche l'intelligenza artificiale. Per odontoiatri e professionisti.
+            </p>
+            <div class="hero-cta-container">
+                <a href="#iscrizioni" class="cta-primary">Iscriviti al Corso</a>
+                <button class="brochure-cta" onclick="openBrochureModal()">📥 Scarica Brochure</button>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">10</span>
+                    <span class="stat-label">Posti Early Bird</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">€690</span>
+                    <span class="stat-label">+IVA Early Bird</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">20</span>
+                    <span class="stat-label">Posti Totali</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section problem-section">
+        <div class="section-header">
+            <div class="section-badge">Il Problema</div>
+            <h2 class="section-title">L'AI È Ovunque, Ma Come Usarla?</h2>
+            <p class="section-subtitle">
+                L'intelligenza artificiale sta entrando nel lavoro quotidiano,<br>
+                ma spesso senza un metodo chiaro
+            </p>
+        </div>
+        <div class="problem-grid">
+            <div class="problem-card">
+                <div class="problem-icon">❌</div>
+                <h3>Confusione</h3>
+                <p>Troppi strumenti, nessuna strategia. Non sai da dove iniziare o quale AI usare per cosa.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">⚠️</div>
+                <h3>Inefficacia</h3>
+                <p>Usi ChatGPT ma non ottieni i risultati sperati. Il problema non è lo strumento, è il metodo.</p>
+            </div>
+            <div class="problem-card">
+                <div class="problem-icon">🔄</div>
+                <h3>Perdita di Controllo</h3>
+                <p>Temi di delegare all'AI perché non hai una struttura chiara per gestirla nel tuo workflow.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="section">
+        <div class="solution-grid">
+            <div class="solution-image">🎯</div>
+            <div class="solution-content">
+                <div class="section-badge">La Soluzione</div>
+                <h3>Un Metodo Strutturato Prima degli Strumenti</h3>
+                <p style="color: var(--text-light); margin-bottom: 2rem;">
+                    Questo corso nasce per accompagnare i professionisti nell'integrazione pratica, 
+                    graduale e consapevole dell'AI nel lavoro reale, senza stravolgere il proprio modo di lavorare.
+                </p>
+                <ul class="solution-list">
+                    <li>
+                        <span class="check-icon">✓</span>
+                        <div>
+                            <strong>Struttura le informazioni</strong> prima di usare l'AI
+                        </div>
+                    </li>
+                    <li>
+                        <span class="check-icon">✓</span>
+                        <div>
+                            <strong>Scegli lo strumento giusto</strong> in base all'esigenza clinica, organizzativa o comunicativa
+                        </div>
+                    </li>
+                    <li>
+                        <span class="check-icon">✓</span>
+                        <div>
+                            <strong>Integra metodo e tecnologia</strong> nella pratica quotidiana senza perdere controllo
+                        </div>
+                    </li>
+                    <li>
+                        <span class="check-icon">✓</span>
+                        <div>
+                            <strong>Migliora nel tempo</strong> con una logica di miglioramento continuo
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section" style="background: var(--bg-light);">
+        <div class="section-header">
+            <div class="section-badge">Cosa Imparerai</div>
+            <h2 class="section-title">Competenze Concrete, Applicabili Subito</h2>
+        </div>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <span class="benefit-icon">📋</span>
+                <h3>Strutturazione</h3>
+                <p>Come organizzare informazioni e processi prima di usare qualsiasi AI, per avere sempre il controllo.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">🤖</span>
+                <h3>AI Diverse per Obiettivi Diversi</h3>
+                <p>Quali intelligenze artificiali usare per clinica, organizzazione, comunicazione. Strategia, non improvvisazione.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">📊</span>
+                <h3>Analisi Complessa</h3>
+                <p>Come analizzare dati e situazioni complesse con il supporto dell'AI, risparmiando tempo mentale prezioso.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">✅</span>
+                <h3>Piani Concreti</h3>
+                <p>Costruire piani operativi applicabili, non liste di buone intenzioni. Esci con un piano reale per il tuo studio.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">🔄</span>
+                <h3>Integrazione Quotidiana</h3>
+                <p>Come integrare metodo e tecnologia nella pratica di tutti i giorni, in modo sostenibile.</p>
+            </div>
+            <div class="benefit-card">
+                <span class="benefit-icon">📈</span>
+                <h3>Miglioramento Continuo</h3>
+                <p>Una logica di evoluzione progressiva che ti permette di crescere nel tempo con l'AI.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Section -->
+    <section class="section program-section" id="programma">
+        <div class="section-header">
+            <div class="section-badge">Il Metodo</div>
+            <h2 class="section-title">Come Funziona il Corso</h2>
+            <p class="section-subtitle">
+                Formazione strutturata + Studio pratico su casi reali + Utilizzo diretto delle AI<br>
+                Applicazioni cliniche, organizzative ed extracliniche
+            </p>
+        </div>
+        <div class="program-timeline">
+            <div class="program-item">
+                <div class="program-number">1</div>
+                <div class="program-content">
+                    <h3>Fondamenta del Metodo</h3>
+                    <p>Imparare a strutturare informazioni e processi PRIMA di usare l'AI. Il framework che rende tutto il resto efficace. Esercitazioni pratiche su come organizzare il pensiero per risultati prevedibili.</p>
+                </div>
+            </div>
+            <div class="program-item">
+                <div class="program-number">2</div>
+                <div class="program-content">
+                    <h3>Tipologie di AI e Applicazioni</h3>
+                    <p>Quale intelligenza artificiale per quale obiettivo. AI generativa, analitica, predittiva: quando usare cosa. Esempi concreti dal mondo odontoiatrico e professionale.</p>
+                </div>
+            </div>
+            <div class="program-item">
+                <div class="program-number">3</div>
+                <div class="program-content">
+                    <h3>Casi Reali - Clinica</h3>
+                    <p>Applicazione su casi clinici reali. Analisi di situazioni complesse, pianificazione trattamenti, gestione documentazione. Lavoriamo sui TUOI casi, con le TUE sfide.</p>
+                </div>
+            </div>
+            <div class="program-item">
+                <div class="program-number">4</div>
+                <div class="program-content">
+                    <h3>Casi Reali - Organizzazione</h3>
+                    <p>Ottimizzazione flussi di lavoro, gestione team, analisi performance, protocolli operativi. Come l'AI migliora la gestione dello studio senza sostituire le persone.</p>
+                </div>
+            </div>
+            <div class="program-item">
+                <div class="program-number">5</div>
+                <div class="program-content">
+                    <h3>Piano di Implementazione</h3>
+                    <p>Costruzione del tuo piano operativo personalizzato. Cosa implementare, come, quando. Roadmap concreta per i prossimi 90 giorni. Esci con un piano, non con idee vaghe.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section pricing-section" id="prezzi">
+        <div class="section-header">
+            <div class="section-badge">Tariffe</div>
+            <h2 class="section-title">Scegli la Tua Tariffa</h2>
+            <p class="section-subtitle">
+                Approfitta dell'Early Bird: solo i primi 10 iscritti accedono al prezzo promozionale
+            </p>
+        </div>
+        <div class="pricing-grid">
+            <!-- Early Bird Card -->
+            <div class="pricing-card featured">
+                <div class="pricing-badge">🔥 EARLY BIRD</div>
+                <h3 class="pricing-title">Primi 10 Posti</h3>
+                <div class="pricing-savings">💰 Risparmi €134,20</div>
+                <div class="pricing-price">
+                    <span class="currency">€</span>690
+                </div>
+                <div class="pricing-vat">+ IVA 22%</div>
+                <div class="pricing-total">€841,80 totali</div>
+                <ul class="pricing-features">
+                    <li><span class="check">✓</span> Accesso completo al corso</li>
+                    <li><span class="check">✓</span> Materiali didattici inclusi</li>
+                    <li><span class="check">✓</span> Certificato di partecipazione</li>
+                    <li><span class="check">✓</span> Casi pratici personalizzati</li>
+                    <li><span class="check">✓</span> Coffee break e lunch</li>
+                    <li><span class="check">✓</span> Supporto post-corso</li>
+                    <li><span class="check">✓</span> ⚡ Solo primi 10 iscritti</li>
+                </ul>
+                <a href="#iscrizioni" class="pricing-cta">Prenota Early Bird →</a>
+            </div>
+
+            <!-- Standard Card -->
+            <div class="pricing-card">
+                <h3 class="pricing-title">Tariffa Standard</h3>
+                <div style="height: 24px; margin-bottom: 0.5rem;"></div>
+                <div class="pricing-price">
+                    <span class="currency">€</span>800
+                </div>
+                <div class="pricing-vat">+ IVA 22%</div>
+                <div class="pricing-total">€976 totali</div>
+                <ul class="pricing-features">
+                    <li><span class="check">✓</span> Accesso completo al corso</li>
+                    <li><span class="check">✓</span> Materiali didattici inclusi</li>
+                    <li><span class="check">✓</span> Certificato di partecipazione</li>
+                    <li><span class="check">✓</span> Casi pratici personalizzati</li>
+                    <li><span class="check">✓</span> Coffee break e lunch</li>
+                    <li><span class="check">✓</span> Supporto post-corso</li>
+                    <li style="color: #64748b;"><span class="check" style="color: #64748b;">•</span> Dall'11° iscritto in poi</li>
+                </ul>
+                <a href="#iscrizioni" class="pricing-cta">Prenota Posto →</a>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem; color: #94a3b8;">
+            <p style="font-size: 0.95rem;">
+                ⚡ I posti Early Bird vengono assegnati in ordine di iscrizione<br>
+                🔒 Pagamento sicuro | 📧 Conferma immediata via email
+            </p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section">
+        <div class="about-grid">
+            <div class="about-image">
+                <img src="barbara-sabiu.png" 
+                     alt="Dott.ssa Barbara Sabiu" 
+                     style="width: 100%; height: 100%; object-fit: cover; border-radius: 20px;">
+            </div>
+            <div class="about-content">
+                <div class="section-badge">Chi Sono</div>
+                <h3>Dott.ssa Barbara Sabiu</h3>
+                <p style="color: var(--text-light); margin-bottom: 1.5rem;">
+                    Odontoiatra, relatrice ed esperta di flussi digitali e integrazione AI nella pratica professionale.
+                </p>
+                <p style="color: var(--text-light); margin-bottom: 1.5rem;">
+                    Non sono un'informatica che parla di odontoiatria. Sono un'odontoiatra che usa l'AI ogni giorno 
+                    nella pratica reale. Insegno chirurgia guidata, ho integrato l'intelligenza artificiale nel mio 
+                    studio e conosco esattamente dove si rischia di sbagliare.
+                </p>
+                <div class="about-credentials">
+                    <span class="credential">Odontoiatra</span>
+                    <span class="credential">Esperta Chirurgia Guidata</span>
+                    <span class="credential">Relatrice</span>
+                    <span class="credential">Integrazione AI</span>
+                </div>
+                <p style="color: var(--text); font-weight: 600;">
+                    Questo corso nasce da anni di pratica, errori, ottimizzazioni.<br>
+                    Non teoria. Esperienza applicata.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section">
+        <div class="section-header">
+            <div class="section-badge">FAQ</div>
+            <h2 class="section-title">Domande Frequenti</h2>
+        </div>
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question">
+                    Quanto costa il corso?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    <strong>Early Bird (primi 10 posti):</strong> €690 + IVA (€841,80 totali) - Risparmi €134,20!<br>
+                    <strong>Tariffa Standard (dal 11° posto):</strong> €800 + IVA (€976 totali)<br><br>
+                    La quota include: accesso completo al corso, materiali didattici, certificato di partecipazione, coffee break, lunch e supporto post-corso.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Come funziona l'Early Bird?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    L'Early Bird è riservato ai primi 10 iscritti. I posti vengono assegnati in ordine cronologico di iscrizione. 
+                    Una volta raggiunti i 10 posti Early Bird, si passa automaticamente alla tariffa standard. 
+                    Non perdere l'opportunità di risparmiare €134,20!
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Devo essere esperto di tecnologia?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    No, assolutamente. Il corso è pensato per professionisti che vogliono migliorare il proprio lavoro, 
+                    non per esperti di informatica. Serve solo voglia di apprendere e applicare.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    È solo teoria o ci sono esercitazioni pratiche?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    È un corso pratico al 100%. Lavoriamo su casi reali, con esercitazioni dirette sulle AI, 
+                    applicazioni concrete. Non è una lezione frontale, è un laboratorio operativo.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Cosa porto a casa concretamente?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Un metodo strutturato e replicabile, un uso concreto dell'intelligenza artificiale applicata al tuo lavoro, 
+                    un piano operativo personalizzato applicabile dal giorno dopo, e una nuova modalità di gestione del lavoro più chiara e sostenibile.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    A chi è rivolto esattamente?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Professionisti sanitari e clinici, odontoiatri, liberi professionisti, formatori, e chiunque lavori 
+                    in contesti complessi e voglia integrare l'AI senza perdere controllo.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Perché Alghero?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Studio Sabiu Academy è un centro di eccellenza per l'integrazione digitale in odontoiatria in Sardegna. 
+                    Lavoriamo in un ambiente professionale attrezzato, con tecnologie all'avanguardia e un setting ideale per la formazione pratica.
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Quanti partecipanti ci saranno?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    Esattamente 20 professionisti. Manteniamo i numeri limitati per garantire attenzione personalizzata, 
+                    tempo dedicato ai casi di ciascuno e un'esperienza di qualità. 10 posti Early Bird + 10 posti Standard.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="iscrizioni">
+        <div class="urgency-box">
+            <strong>🔥 EARLY BIRD - POSTI LIMITATI</strong>
+            <p style="margin: 0;">Solo i primi 10 iscritti accedono a €690+IVA | Risparmia €134,20</p>
+        </div>
+        <h2>Iscriviti al Corso</h2>
+        <p>
+            Non aspettare. Approfitta della tariffa Early Bird.<br>
+            I posti si stanno esaurendo velocemente.
+        </p>
+        
+        <div class="form-section">
+            <!-- INSERISCI QUI IL TUO CODICE GOOGLE FORMS -->
+            <!-- 
+            ISTRUZIONI:
+            1. Vai su forms.google.com e crea il tuo form
+            2. Click "Invia" → Icona "<>" (Incorpora HTML)
+            3. Copia il codice <iframe>
+            4. Incollalo qui sotto sostituendo il placeholder
+            
+            Esempio di codice che otterrai:
+            <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" 
+                    width="100%" 
+                    height="1200" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0"
+                    style="border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+                Caricamento…
+            </iframe>
+            -->
+            
+            <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); max-width: 700px; margin: 0 auto;">
+                <p style="text-align: center; color: var(--text-light); margin-bottom: 1.5rem;">
+                    📋 Compila il form per richiedere l'iscrizione al corso
+                </p>
+                
+                <!-- Google Forms Iscrizione -->
+                <iframe 
+                    src="https://docs.google.com/forms/d/e/1FAIpQLSd4KRJrCXPm4n6TIhvSRRC201H5IgmaoIPKtz-V_g6an0dPAQ/viewform?embedded=true" 
+                    width="100%" 
+                    height="1200" 
+                    frameborder="0" 
+                    marginheight="0" 
+                    marginwidth="0"
+                    style="border: none; border-radius: 10px;">
+                    Caricamento…
+                </iframe>
+                
+                <p class="form-note" style="margin-top: 1rem;">
+                    🔒 I tuoi dati sono protetti e verranno usati solo per l'iscrizione al corso
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mailchimp Brochure Modal -->
+    <div id="brochureModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="modal-close" onclick="closeBrochureModal()">&times;</button>
+                <h2>📥 Scarica la Brochure Completa</h2>
+                <p>Ricevi subito via email il programma dettagliato del corso</p>
+            </div>
+            <div class="modal-body">
+                <div id="mc_embed_shell">
+                    <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
+                    <div id="mc_embed_signup">
+                        <form action="https://sabiuacademy.us5.list-manage.com/subscribe/post?u=94009e27c170ef65faedb0cf0&amp;id=212bed8a05&amp;f_id=00a442edf0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                            <div id="mc_embed_signup_scroll">
+                                <h2>Ricevi la brochure del corso "Intelligenza Artificiale in Odontoiatria" - 13-14 Marzo 2026, Alghero</h2>
+                                <div class="indicates-required"><span class="asterisk">*</span> campo obbligatorio</div>
+                                <div class="mc-field-group">
+                                    <label for="mce-EMAIL">Indirizzo Email <span class="asterisk">*</span></label>
+                                    <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value="" placeholder="tua@email.it">
+                                </div>
+                                <div id="mce-responses" class="clear foot">
+                                    <div class="response" id="mce-error-response" style="display: none;"></div>
+                                    <div class="response" id="mce-success-response" style="display: none;"></div>
+                                </div>
+                                <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                                    <input type="text" name="b_94009e27c170ef65faedb0cf0_212bed8a05" tabindex="-1" value="">
+                                </div>
+                                <div class="optionalParent">
+                                    <div class="clear foot">
+                                        <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="📥 Ricevi Brochure">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
+                    <script type="text/javascript">
+                        (function($) {
+                            window.fnames = new Array(); 
+                            window.ftypes = new Array();
+                            fnames[0]='EMAIL';
+                            ftypes[0]='email';
+                        }(jQuery));
+                        var $mcj = jQuery.noConflict(true);
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-logos">
+            <!-- Logo Combinato Sabiu Academy + Mediline -->
+            <!-- ISTRUZIONI: Carica il file logo su GitHub nella stessa cartella di index.html -->
+            <!-- Poi sostituisci "logo-sabiu-mediline.png" con il nome del tuo file -->
+            <img src="logo-sabiu-mediline.png" 
+                 alt="Studio Sabiu Academy x Mediline" 
+                 style="max-width: 400px; height: auto; margin: 0 auto;"
+                 class="footer-logo-img">
+        </div>
+        <div class="footer-contact">
+            <p>📍 13-14 Marzo 2026 | Alghero, Sardegna</p>
+            <p>📧 <a href="mailto:sabiuacademy@gmail.com">sabiuacademy@gmail.com</a></p>
+            <p>📱 Per info: <a href="mailto:medilinesrl@gmail.com">medilinesrl@gmail.com</a></p>
+        </div>
+        <p style="margin-top: 2rem; color: #64748b; font-size: 0.9rem;">
+            © 2026 Studio Sabiu Academy x Mediline - Tutti i diritti riservati
+        </p>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const wasActive = item.classList.contains('active');
+                
+                // Close all items
+                document.querySelectorAll('.faq-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                
+                // Open clicked item if it wasn't active
+                if (!wasActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Brochure Modal Functions
+        function openBrochureModal() {
+            document.getElementById('brochureModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBrochureModal() {
+            document.getElementById('brochureModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on outside click
+        document.getElementById('brochureModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeBrochureModal();
+            }
+        });
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeBrochureModal();
+            }
+        });
+    </script>
+</body>
+</html>
